@@ -12,3 +12,6 @@ streamlit-aggrid==0.3.4.post3
 huggingface-hub==0.21.4
 sentence-transformers==2.5.1
 faiss-cpu==1.8.0
+openpyxl==3.1.2
+unstructured==0.12.5
+unstructured-client==0.21.1
