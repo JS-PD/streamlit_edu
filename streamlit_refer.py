@@ -56,7 +56,9 @@ def main():
     with st.sidebar:
         uploaded_files =  st.file_uploader("Upload your file",type=['pdf','docx','pptx','txt','csv','xlsx'],accept_multiple_files=True)
 
-        openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+        openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password", )
+
+        data_api_key = st.text_input("DATA.GO.KR API Key", key="data_api_key", type="password")
 
         process = st.button("Process")
 
@@ -71,7 +73,9 @@ def main():
         get_data = st.button("get_data")
         
     if get_insta:
-
+        if not openai_api_key:
+            st.info("Open AI에서 발급받은 키를 입력해주세요")
+            st.stop()
         if not get_word:
             warning_message = st.sidebar.warning('검색할 #태그를 입력하세요', icon="⚠️")
             time.sleep(2)
@@ -103,7 +107,9 @@ def main():
 
 
     if get_news:
-
+        if not openai_api_key:
+            st.info("Open AI에서 발급받은 키를 입력해주세요")
+            st.stop()
         if not get_url:
             warning_message = st.sidebar.warning('검색할 URL을 입력하세요', icon="⚠️")
             time.sleep(2)
@@ -150,7 +156,9 @@ def main():
             warning_message = st.sidebar.warning('데이터 처리가 완료었습니다', icon="⚠️")
 
     if get_data:
-            
+        if not openai_api_key:
+            st.info("Open AI에서 발급받은 키를 입력해주세요")
+            st.stop()
         url = "https://scienceon.kisti.re.kr/aiq/mlsh3/selectAIQMlshList.do"
 
         response_header = requests.get(url)
@@ -192,7 +200,7 @@ def main():
 
     if process:
         if not openai_api_key:
-            st.info(openai_api_key)
+            st.info("Open AI에서 발급받은 키를 입력해주세요")
             st.stop()
         files_text = get_text(uploaded_files)
         text_chunks = get_text_chunks(files_text)
@@ -203,11 +211,16 @@ def main():
         st.session_state.processComplete = True
 
     if get_api:
-
+        if not data_api_key:
+            st.info("공공데이터 포럼에서 발급받은 키를 입력해주세요")
+            st.stop()
+        if not openai_api_key:
+            st.info("Open AI에서 발급받은 키를 입력해주세요")
+            st.stop()
         warning_message = st.sidebar.warning('수집 된 데이터를 처리하고 있습니다', icon="⚠️")
 
         url = 'http://apis.data.go.kr/1230000/BidPublicInfoService04/getBidPblancListInfoThngPPSSrch01?'
-        params ={'serviceKey' : 'XvF7seec2L00cUSKDTcOGNajtnFarucL4S+2xvoVjAWk/pCbmVolScx4r99QY8SoXOuxRZqFUod/gEPdLm6RWQ=='
+        params ={'serviceKey' : data_api_key
                 , 'numOfRows' : '10', 'pageNo' : '1', 'inqryDiv' : '1', 'indstrytyCd' : '1244', 'inqryBgnDt' : '202402110000', 'inqryEndDt' : '202403120000', 'type' : 'json' }
 
         response = requests.get(url, params=params)
