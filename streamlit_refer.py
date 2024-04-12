@@ -60,6 +60,10 @@ def main():
 
         data_api_key = st.text_input("DATA.GO.KR API Key", key="data_api_key", type="password")
 
+        get_username = st.text_input("Insta Crawling Key", key="get_username", type="default")
+
+        get_password = st.text_input("Insta Crawling Key", key="get_password", type="password")
+
         process = st.button("Process")
 
         get_word = st.text_input('검색할 #태그를 입력하세요', placeholder='ex)스마트팜')
@@ -80,10 +84,15 @@ def main():
             warning_message = st.sidebar.warning('검색할 #태그를 입력하세요', icon="⚠️")
             time.sleep(2)
             warning_message.empty()
-
+        if not get_username:
+            st.info("ID를 입력해주세요")
+            st.stop()
+        if not get_password:
+            st.info("패스워드를 입력해주세요")
+            st.stop()
         else:   
-            #import get_insta_hashtag
-            #get_insta_hashtag.main(get_word)
+            import get_insta_hashtag
+            get_insta_hashtag.main(get_word, get_username, get_password)
 
             warning_message = st.sidebar.warning('수집 된 데이터를 처리하고 있습니다', icon="⚠️")
             
