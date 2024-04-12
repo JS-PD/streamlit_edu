@@ -82,8 +82,8 @@ def main():
             warning_message.empty()
 
         else:   
-            import get_insta_hashtag
-            get_insta_hashtag.main(get_word)
+            #import get_insta_hashtag
+            #get_insta_hashtag.main(get_word)
 
             warning_message = st.sidebar.warning('수집 된 데이터를 처리하고 있습니다', icon="⚠️")
             
