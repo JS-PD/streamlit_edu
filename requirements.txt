@@ -17,3 +17,8 @@ unstructured==0.12.5
 unstructured-client==0.21.1
 selenium==4.18.1
 webdriver-manager==4.0.1
+pyaudio==0.2.14
+translate==3.6.1
+playsound==1.3.0
+gtts==2.5.1
+SpeechRecognition==3.10.3
