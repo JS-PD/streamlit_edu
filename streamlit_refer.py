@@ -36,6 +36,14 @@ from langchain_community.document_loaders import WebBaseLoader
 
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
+import os
+import base64
+import re
+from dotenv import load_dotenv
+
+# API 키 정보 로드
+load_dotenv()
+
 def main():
     st.set_page_config(
     page_title="DirChat",
@@ -56,7 +64,7 @@ def main():
     with st.sidebar:
         uploaded_files =  st.file_uploader("Upload your file",type=['pdf','docx','pptx','txt','csv','xlsx'],accept_multiple_files=True)
 
-        openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password", )
+        openai_api_key = st.text_input("OpenAI API Key", st.secrets['OPENAI_API_KEY']['OPENAI_API_KEY'], key="chatbot_api_key", type="password", )
 
         process = st.button("Process")
         
