@@ -36,7 +36,7 @@ if openai_api_key:
 
     completion = client.chat.completions.create(
         #model="gpt-3.5-turbo-16k",
-        model="gpt-3.5-turbo",
+        model="gpt-4o",
         stream=True,
         messages=st.session_state.messages
         )
