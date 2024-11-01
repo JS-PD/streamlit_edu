@@ -9,7 +9,7 @@ st.write(
     """This demo shows how to use `st.write` to visualize Pandas DataFrames."""
 )
 with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password", )
+    openai_api_key = st.text_input("OpenAI API Key", st.secrets['OPENAI_API_KEY']['OPENAI_API_KEY'], key="chatbot_api_key", type="password", )
 
 
 # Store LLM generated responses
