@@ -68,11 +68,11 @@ def main():
 
         process = st.button("Process")
         
-        data_api_key = st.text_input("DATA.GO.KR API Key", key="data_api_key", type="password")
+        data_api_key = st.text_input("DATA.GO.KR API Key", st.secrets[DATA_API_KEY][DATA_API_KEY], key="data_api_key", type="password")
 
-        get_username = st.text_input("Insta username", key="get_username", type="default")
+        get_username = st.text_input("Insta username", st.secrets[username][username], key="get_username", type="default")
 
-        get_password = st.text_input("Insta password", key="get_password", type="password")
+        get_password = st.text_input("Insta password", st.secrets[password][password], key="get_password", type="password")
 
 
 
