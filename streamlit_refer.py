@@ -239,7 +239,7 @@ def main():
             st.stop()
         warning_message = st.sidebar.warning('수집 된 데이터를 처리하고 있습니다', icon="⚠️")
 
-        url = 'http://apis.data.go.kr/1230000/BidPublicInfoService04/getBidPblancListInfoThngPPSSrch01?'
+        url = 'http://apis.data.go.kr/1230000/BidPublicInfoService05/getBidPblancListInfoThngPPSSrch02?'
         params ={'serviceKey' : data_api_key
                 , 'numOfRows' : '10', 'pageNo' : '1', 'inqryDiv' : '1', 'indstrytyCd' : '1244', 'inqryBgnDt' : '202402110000', 'inqryEndDt' : '202403120000', 'type' : 'json' }
 
